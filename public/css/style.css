@@ -1,0 +1,229 @@
+/* ==========================================================================
+   style.css - Dimensional Layering Dashboard
+   Paleta: #FFFFFF (Surface), #F5F5F5 (Bg), #E0E0E0 (Border),
+           #6366F1 (Primary/Indigo), #3B82F6 (Secondary/Blue)
+   ========================================================================== */
+
+:root {
+  --bg-base: #f5f5f5;
+  --surface: #ffffff;
+  --border: #e0e0e0;
+  --indigo: #6366f1;
+  --blue: #3b82f6;
+  --text-main: #333333;
+  --text-muted: #6b7280;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Sistema de Camadas Dimensionais (Elevação) --- */
+.layer-1 {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.layer-2 {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.08),
+    0 4px 6px -2px rgba(0, 0, 0, 0.04);
+  position: relative;
+}
+
+.layer-3 {
+  /* Usado para Modais e Menus flutuantes (maior elevação) */
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Efeito de Sobreposição (Overlap) --- */
+.overlap-header {
+  background: linear-gradient(135deg, var(--indigo), var(--blue));
+  color: var(--surface);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: -2rem; /* Cria o efeito do cabeçalho saltando para fora do cartão */
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- Navegação Flutuante --- */
+.floating-nav {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin: 1.5rem auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  padding: 0.5rem 1.5rem;
+}
+
+/* --- Botões --- */
+.btn-indigo {
+  background-color: var(--indigo);
+  color: var(--surface);
+  border: none;
+  box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.2);
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+}
+.btn-indigo:hover {
+  background-color: #4f46e5;
+  color: var(--surface);
+  transform: translateY(-2px); /* Efeito 3D ao passar o mouse */
+  box-shadow: 0 6px 10px -1px rgba(99, 102, 241, 0.3);
+}
+
+.btn-blue {
+  background-color: var(--blue);
+  color: var(--surface);
+  border: none;
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+.btn-blue:hover {
+  background-color: #2563eb;
+  color: var(--surface);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px -1px rgba(59, 130, 246, 0.3);
+}
+
+.btn-outline-layer {
+  background-color: var(--surface);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+.btn-outline-layer:hover {
+  background-color: var(--bg-base);
+  border-color: var(--indigo);
+}
+
+/* --- Formulários --- */
+.form-control,
+.form-select {
+  background-color: var(--bg-base);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+}
+.form-control:focus,
+.form-select:focus {
+  background-color: var(--surface);
+  border-color: var(--indigo);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+.form-label {
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* --- Badges Estilizadas baseadas na Paleta --- */
+.badge-high {
+  background-color: var(--indigo);
+  color: white;
+}
+.badge-medium {
+  background-color: var(--blue);
+  color: white;
+}
+.badge-low {
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+}
+
+/* --- Tabelas --- */
+.table-layer th {
+  background-color: transparent;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--border);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+.table-layer td {
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border);
+}
+
+/* --- Sistema de Alertas (Notificações) --- */
+.alert-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1050;
+  min-width: 320px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.alert-layer {
+  border: none;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  margin-bottom: 0; /* Espaçamento gerenciado pelo gap do container */
+}
+
+/* --- Live Alerts Container --- */
+.alert-toast-container {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 1100; /* Fica acima dos modais (que usam 1050/1055) */
+  min-width: 320px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Customização do Alerta para Dimensional Layering */
+.alert-dimensional {
+  background-color: var(--surface);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+}
+.alert-dimensional.success {
+  border-left: 5px solid var(--indigo);
+}
+.alert-dimensional.danger {
+  border-left: 5px solid #ef476f;
+}
+.alert-dimensional.warning {
+  border-left: 5px solid #ffd166;
+}
