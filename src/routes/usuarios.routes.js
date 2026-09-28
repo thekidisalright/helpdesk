@@ -3,13 +3,13 @@ const router = express.Router();
 const usuariosController = require("../controllers/usuarios.controller");
 const { validarDadosUsuario } = require("../middlewares/validacao.middleware");
 
-router.get("/", usuariosController.readAll);
+router.get("/", usuariosController.getAllUsuarios);
 
-router.get("/:id", usuariosController.read);
+router.get("/:id", usuariosController.getUsuario);
 
-router.post("/", validarDadosUsuario, usuariosController.create);
+router.post("/", validarDadosUsuario, usuariosController.createUsuario);
 
-router.patch("/:id", validarDadosUsuario, usuariosController.update);
+router.patch("/:id", validarDadosUsuario, usuariosController.updateUsuario);
 
 router.patch(
   "/:id/novasenha",
@@ -17,6 +17,6 @@ router.patch(
   usuariosController.updateSenhaUsuario,
 );
 
-router.delete("/:id", usuariosController.remove);
+router.delete("/:id", usuariosController.deleteUsuario);
 
 module.exports = router;
