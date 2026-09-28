@@ -1,0 +1,19 @@
+{
+  "name": "helpdesk",
+  "version": "1.0.0",
+  "description": "Sistema de gerenciamento de chamdos de T.I. (helpdesk)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "Alexandre Silva",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.24.4"
+  }
+}
