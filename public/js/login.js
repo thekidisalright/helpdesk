@@ -11,16 +11,12 @@ btnLogin.addEventListener("click", async (e) => {
 
 const login = async (email, senha) => {
   try {
-    const dados = {
-      email: email,
-      senha: senha,
-    };
     const response = await fetch("/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(dados),
+      body: JSON.stringify({ email, senha }),
     });
     const data = await response.json();
 
@@ -28,8 +24,7 @@ const login = async (email, senha) => {
       throw new Error(data.erro);
     }
 
-    console.log(data);
-    return appendAlert("oi", "success");
+    window.location.href = "/usuario.html";
   } catch (error) {
     console.error("Falha na requisição:", error.message);
     appendAlert(error.message, "danger");
