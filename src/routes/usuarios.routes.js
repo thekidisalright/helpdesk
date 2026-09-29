@@ -2,21 +2,33 @@ const express = require("express");
 const router = express.Router();
 const usuariosController = require("../controllers/usuarios.controller");
 const { validarDadosUsuario } = require("../middlewares/validacao.middleware");
+const permissaoMiddleware = require("../middlewares/permissao.middleware");
 
-router.get("/", usuariosController.getAllUsuarios);
+router.get("/", permissaoMiddleware, usuariosController.getAllUsuarios);
 
-router.get("/:id", usuariosController.getUsuario);
+router.get("/:id", permissaoMiddleware, usuariosController.getUsuario);
 
-router.post("/", validarDadosUsuario, usuariosController.createUsuario);
+router.post(
+  "/",
+  permissaoMiddleware,
+  validarDadosUsuario,
+  usuariosController.createUsuario,
+);
 
-router.patch("/:id", validarDadosUsuario, usuariosController.updateUsuario);
+router.patch(
+  "/:id",
+  permissaoMiddleware,
+  validarDadosUsuario,
+  usuariosController.updateUsuario,
+);
 
 router.patch(
   "/:id/novasenha",
+  permissaoMiddleware,
   validarDadosUsuario,
   usuariosController.updateSenhaUsuario,
 );
 
-router.delete("/:id", usuariosController.deleteUsuario);
+router.delete("/:id", permissaoMiddleware, usuariosController.deleteUsuario);
 
 module.exports = router;

@@ -23,10 +23,7 @@ const login = async (email, senha) => {
     if (!response.ok) {
       throw new Error(data.erro);
     }
-
-    window.location.href = "/usuario.html";
   } catch (error) {
-    console.error("Falha na requisição:", error.message);
     appendAlert(error.message, "danger");
   }
 };

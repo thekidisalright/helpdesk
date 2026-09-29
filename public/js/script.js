@@ -19,3 +19,20 @@ export const appendAlert = (message, type) => {
     }
   }, 4000);
 };
+
+export const verificarPermissao = async () => {
+  const response = await fetch("/api/auth/me");
+
+  if (!response.ok) {
+    window.location.href = "/login.html";
+    return;
+  }
+
+  const usuario = await response.json();
+
+  if (usuario.admin) {
+    window.location.href = "/admin.html";
+  } else {
+    window.location.href = "/usuario.html";
+  }
+};
